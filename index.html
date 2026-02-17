@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dallal - Coming Soon | دلال - قريباً</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue: #0000FF;
+            --white: #FFFFFF;
+            --black: #0A0A0A;
+            --muted: #777;
+        }
+
+        html, body {
+            min-height: 100vh;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body[dir="rtl"] { font-family: 'Tajawal', 'DM Sans', sans-serif; }
+
+        /* background circles */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 700px; height: 700px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.05);
+            top: -250px; right: -200px;
+            pointer-events: none;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            width: 450px; height: 450px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.04);
+            bottom: -150px; left: -80px;
+            pointer-events: none;
+        }
+
+        /* ── DESKTOP LAYOUT ── */
+        .wrapper {
+            display: grid;
+            grid-template-columns: 1fr 430px;
+            gap: 64px;
+            max-width: 1020px;
+            width: 100%;
+            padding: 40px 24px;
+            position: relative;
+            z-index: 2;
+            align-items: center;
+        }
+
+        /* LEFT */
+        .left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .logo-area { animation: fadeUp 0.8s ease both; }
+        .logo-area img { height: 56px; display: block; }
+
+        /* Phone scene */
+        .phone-scene {
+            position: relative;
+            width: 320px;
+            height: 520px;
+        }
+
+        .phone-main {
+            position: absolute;
+            left: 0; top: 0;
+            width: 265px;
+            filter: drop-shadow(0 40px 60px rgba(0,0,0,0.3));
+            animation: float1 5s ease-in-out infinite;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .phone-second {
+            position: absolute;
+            right: 0; bottom: 0;
+            width: 195px;
+            filter: drop-shadow(0 24px 40px rgba(0,0,0,0.25));
+            animation: float2 5s ease-in-out infinite;
+            transition: opacity 0.35s ease, transform 0.35s ease;
+        }
+
+        .phone-main img,
+        .phone-second img { width: 100%; height: auto; display: block; }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            50%       { transform: translateY(-18px) rotate(-2deg); }
+        }
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px) rotate(3deg); }
+            50%       { transform: translateY(-13px) rotate(3deg); }
+        }
+
+        .phone-main.swapping  { opacity: 0; transform: translateY(12px) rotate(-2deg) !important; }
+        .phone-second.swapping { opacity: 0; transform: translateY(12px) rotate(3deg) !important; }
+
+        .tagline {
+            font-size: 12px;
+            color: rgba(255,255,255,0.3);
+            font-style: italic;
+            letter-spacing: 0.5px;
+            animation: fadeUp 0.8s ease 0.6s both;
+        }
+
+        /* ── FORM SIDE ── */
+        .form-wrap { position: relative; }
+
+        .lang-btn {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.22);
+            color: white;
+            padding: 8px 22px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+            width: auto !important;
+            display: inline-block !important;
+            margin-top: 0 !important;
+            white-space: nowrap;
+        }
+        .lang-btn:hover { background: rgba(255,255,255,0.2); }
+
+        .right {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 42px 38px;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+            animation: fadeUp 0.8s ease 0.2s both;
+        }
+
+        .form-logo { margin-bottom: 20px; }
+        .form-logo img { height: 32px; display: block; max-width: 100%; }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 42px;
+            font-weight: 400;
+            color: var(--black);
+            line-height: 1.05;
+            margin-bottom: 10px;
+        }
+        body[dir="rtl"] h1 { font-family: 'Tajawal', serif; font-size: 36px; }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 28px;
+            font-weight: 300;
+        }
+
+        .input-group { margin-bottom: 14px; }
+
+        label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 6px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid #EAEAEA;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--black);
+            background: #FAFAFA;
+            transition: all 0.2s;
+            outline: none;
+        }
+        input:focus, select:focus {
+            border-color: var(--blue);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0,0,255,0.07);
+        }
+        input::placeholder { color: #C0C0C0; }
+
+        .phone-row { display: flex; gap: 8px; }
+        .phone-row select {
+            flex: 0 0 118px;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 28px;
+        }
+        .phone-row input { flex: 1; }
+
+        body[dir="rtl"] .phone-row { flex-direction: row-reverse; }
+        body[dir="rtl"] .phone-row select {
+            background-position: left 10px center;
+            padding-right: 13px; padding-left: 28px;
+        }
+        body[dir="rtl"] input,
+        body[dir="rtl"] select { text-align: right; }
+        body[dir="rtl"] label  { text-align: right; }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 14px 0;
+            color: #CCC;
+            font-size: 12px;
+        }
+        .or-divider::before,
+        .or-divider::after { content:''; flex:1; height:1px; background:#EBEBEB; }
+
+        .optional-note {
+            font-size: 11px;
+            color: #C0C0C0;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        body[dir="rtl"] .optional-note { text-align: right; }
+
+        .submit-btn {
+            width: 100% !important;
+            padding: 15px !important;
+            background: var(--blue) !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 11px !important;
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            font-family: inherit !important;
+            transition: all 0.25s !important;
+            margin-top: 20px !important;
+            display: block !important;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 28px rgba(0,0,255,0.38) !important;
+        }
+        body[dir="rtl"] .submit-btn { letter-spacing: 0 !important; }
+
+        .form-note {
+            text-align: center;
+            font-size: 11px;
+            color: #CACACA;
+            margin-top: 12px;
+        }
+
+        .success-msg {
+            display: none;
+            background: #ECFDF5;
+            border: 1.5px solid #22C55E;
+            border-radius: 10px;
+            padding: 18px;
+            text-align: center;
+            color: #15803D;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 16px;
+        }
+        .success-msg.show { display: block; animation: fadeUp 0.4s ease; }
+
+        /* lang visibility */
+        .lang-en { display: block; }
+        .lang-ar { display: none; }
+        body[dir="rtl"] .lang-en { display: none; }
+        body[dir="rtl"] .lang-ar { display: block; }
+        span.lang-en { display: inline; }
+        span.lang-ar { display: none; }
+        body[dir="rtl"] span.lang-en { display: none; }
+        body[dir="rtl"] span.lang-ar { display: inline; }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(22px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        /* ════════════════════════════
+           MOBILE  ≤ 820px
+        ════════════════════════════ */
+        @media (max-width: 820px) {
+
+            body {
+                align-items: stretch;
+                justify-content: flex-start;
+                min-height: 100vh;
+            }
+
+            .wrapper {
+                grid-template-columns: 1fr;
+                gap: 0;
+                padding: 0;
+                max-width: 100%;
+                align-items: stretch;
+            }
+
+            /* ── TOP BLUE STRIP: phones centered ── */
+            .left {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 32px 24px 12px;
+                gap: 0;
+            }
+
+            .logo-area { display: none; }
+
+            .phone-scene {
+                width: 240px;
+                height: 295px;
+            }
+
+            .phone-main  { width: 190px; left: 0; top: 0; }
+            .phone-second { width: 140px; right: 0; bottom: 0; }
+
+            .tagline { display: none; }
+
+            /* ── WHITE FORM CARD fills rest of screen ── */
+            .form-wrap {
+                padding: 24px 20px 36px;
+            }
+
+            .lang-btn {
+                position: static !important;
+                transform: none !important;
+                left: auto !important;
+                top: auto !important;
+                width: 100% !important;
+                display: block !important;
+                text-align: center;
+                margin-bottom: 16px !important;
+                border-radius: 12px;
+                padding: 13px 22px !important;
+                font-size: 14px;
+            }
+
+            .right {
+                border-radius: 20px;
+                padding: 28px 22px 32px;
+                box-shadow: 0 -4px 40px rgba(0,0,0,0.15);
+            }
+
+            h1 { font-size: 34px; }
+            body[dir="rtl"] h1 { font-size: 30px; }
+
+            .subtitle { margin-bottom: 22px; }
+
+            input, select { font-size: 16px; } /* prevents iOS zoom */
+
+            .submit-btn {
+                padding: 17px !important;
+                font-size: 16px !important;
+                margin-top: 16px !important;
+            }
+
+            .badge { font-size: 11px; }
+        }
+
+        /* ── tiny phones ── */
+        @media (max-width: 375px) {
+            .phone-scene  { width: 200px; height: 245px; }
+            .phone-main   { width: 158px; }
+            .phone-second { width: 116px; }
+            h1 { font-size: 30px; }
+            .right { padding: 24px 18px 28px; }
+        }
+    </style>
+</head>
+<body dir="ltr">
+<div class="wrapper">
+
+    <!-- LEFT / TOP on mobile -->
+    <div class="left">
+        <div class="phone-scene">
+            <div class="phone-main" id="phoneMain">
+                <img src="english_phone.png" alt="Dallal App" id="phoneMainImg">
+            </div>
+            <div class="phone-second" id="phoneSecond">
+                <img src="english_intro.png" alt="Dallal Intro" id="phoneSecondImg">
+            </div>
+        </div>
+
+        <div class="tagline">Peace of Mind..</div>
+    </div>
+
+    <!-- RIGHT / BOTTOM on mobile -->
+    <div class="form-wrap">
+
+        <button class="lang-btn" onclick="toggleLanguage()">
+            <span class="lang-en">العربية</span>
+            <span class="lang-ar">English</span>
+        </button>
+
+        <div class="right">
+            <div class="form-logo">
+                <img src="logo_transparent.png" alt="Dallal">
+            </div>
+
+            <h1>
+                <span class="lang-en">Coming Soon</span>
+                <span class="lang-ar">قريباً</span>
+            </h1>
+
+            <p class="subtitle">
+                <span class="lang-en">Be the first to experience Dallal.<br>Join our waitlist and we'll notify you when we launch.</span>
+                <span class="lang-ar">كن أول من يجرب دلال.<br>انضم إلى قائمة الانتظار وسنخبرك عند الإطلاق.</span>
+            </p>
+
+            <form id="waitlistForm">
+                <div class="input-group">
+                    <label>
+                        <span class="lang-en">Email Address *</span>
+                        <span class="lang-ar">البريد الإلكتروني *</span>
+                    </label>
+                    <input type="email" id="email" placeholder="your@email.com" required autocomplete="email">
+                </div>
+
+                <div class="or-divider">
+                    <span class="lang-en">or</span>
+                    <span class="lang-ar">أو</span>
+                </div>
+
+                <div class="input-group">
+                    <label>
+                        <span class="lang-en">Phone Number</span>
+                        <span class="lang-ar">رقم الهاتف</span>
+                    </label>
+                    <div class="phone-row">
+                        <select id="countryCode">
+                            <option value="+965" selected>🇰🇼 +965</option>
+                            <option value="+966">🇸🇦 +966</option>
+                            <option value="+971">🇦🇪 +971</option>
+                            <option value="+974">🇶🇦 +974</option>
+                            <option value="+973">🇧🇭 +973</option>
+                            <option value="+968">🇴🇲 +968</option>
+                            <option value="+20">🇪🇬 +20</option>
+                            <option value="+962">🇯🇴 +962</option>
+                            <option value="+961">🇱🇧 +961</option>
+                            <option value="+91">🇮🇳 +91</option>
+                            <option value="+92">🇵🇰 +92</option>
+                            <option value="+880">🇧🇩 +880</option>
+                            <option value="+63">🇵🇭 +63</option>
+                            <option value="+60">🇲🇾 +60</option>
+                            <option value="+65">🇸🇬 +65</option>
+                            <option value="+86">🇨🇳 +86</option>
+                            <option value="+82">🇰🇷 +82</option>
+                            <option value="+81">🇯🇵 +81</option>
+                            <option value="+61">🇦🇺 +61</option>
+                            <option value="+64">🇳🇿 +64</option>
+                            <option value="+33">🇫🇷 +33</option>
+                            <option value="+49">🇩🇪 +49</option>
+                            <option value="+39">🇮🇹 +39</option>
+                            <option value="+34">🇪🇸 +34</option>
+                            <option value="+31">🇳🇱 +31</option>
+                            <option value="+46">🇸🇪 +46</option>
+                            <option value="+47">🇳🇴 +47</option>
+                            <option value="+45">🇩🇰 +45</option>
+                            <option value="+41">🇨🇭 +41</option>
+                            <option value="+43">🇦🇹 +43</option>
+                            <option value="+32">🇧🇪 +32</option>
+                            <option value="+351">🇵🇹 +351</option>
+                            <option value="+7">🇷🇺 +7</option>
+                            <option value="+90">🇹🇷 +90</option>
+                            <option value="+234">🇳🇬 +234</option>
+                            <option value="+27">🇿🇦 +27</option>
+                            <option value="+254">🇰🇪 +254</option>
+                            <option value="+52">🇲🇽 +52</option>
+                            <option value="+55">🇧🇷 +55</option>
+                            <option value="+54">🇦🇷 +54</option>
+                            <option value="+56">🇨🇱 +56</option>
+                            <option value="+57">🇨🇴 +57</option>
+                            <option value="+1">🇺🇸 +1</option>
+                            <option value="+44">🇬🇧 +44</option>
+                        </select>
+                        <input type="tel" id="phone" placeholder="0000 0000" autocomplete="tel">
+                    </div>
+                    <p class="optional-note">
+                        <span class="lang-en">Optional — For exclusive SMS updates</span>
+                        <span class="lang-ar">اختياري — للحصول على تحديثات حصرية</span>
+                    </p>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span class="lang-en">Join the Waitlist</span>
+                    <span class="lang-ar">انضم إلى قائمة الانتظار</span>
+                </button>
+            </form>
+
+            <div class="success-msg" id="successMsg">
+                <span class="lang-en">🎉 You're on the list! We'll be in touch soon.</span>
+                <span class="lang-ar">🎉 تم إضافتك إلى القائمة! سنتواصل معك قريباً.</span>
+            </div>
+
+            <p class="form-note">
+                <span class="lang-en">🔒 No spam. Unsubscribe anytime.</span>
+                <span class="lang-ar">🔒 لا رسائل مزعجة. إلغاء الاشتراك في أي وقت.</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxW3I0DAyuToQ7V4Jj1aBN8JvUazrv73znjtOX4ZU06YbvgSjPE9Jk6uD74aPAWsaQ2/exec';
+
+    document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const btn = document.querySelector('.submit-btn');
+        btn.style.opacity = '0.65';
+        btn.disabled = true;
+
+        const data = {
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value
+                ? document.getElementById('countryCode').value + ' ' + document.getElementById('phone').value
+                : '',
+            timestamp: new Date().toISOString(),
+            source: getSource(),
+            userAgent: navigator.userAgent,
+            referrer: document.referrer,
+            language: document.body.getAttribute('dir') === 'rtl' ? 'Arabic' : 'English'
+        };
+
+        try {
+            await fetch(SCRIPT_URL, {
+                method: 'POST', mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            document.getElementById('waitlistForm').style.display = 'none';
+            document.getElementById('successMsg').classList.add('show');
+        } catch(err) {
+            btn.style.opacity = '1';
+            btn.disabled = false;
+        }
+    });
+
+    function getSource() {
+        const p = new URLSearchParams(window.location.search);
+        if (p.has('source')) return p.get('source');
+        if (p.has('utm_source')) return p.get('utm_source');
+        const r = document.referrer.toLowerCase();
+        if (r.includes('instagram')) return 'Instagram';
+        if (r.includes('facebook')) return 'Facebook';
+        if (r.includes('tiktok')) return 'TikTok';
+        if (r.includes('twitter') || r.includes('x.com')) return 'Twitter';
+        return 'Direct Link';
+    }
+
+    function toggleLanguage() {
+        const isLTR = document.body.getAttribute('dir') === 'ltr';
+        document.body.setAttribute('dir', isLTR ? 'rtl' : 'ltr');
+        document.documentElement.setAttribute('lang', isLTR ? 'ar' : 'en');
+        document.documentElement.setAttribute('dir', isLTR ? 'rtl' : 'ltr');
+        document.getElementById('email').placeholder = isLTR ? 'بريدك@الإلكتروني.com' : 'your@email.com';
+        document.getElementById('phone').placeholder = isLTR ? '٠٠٠٠ ٠٠٠٠' : '0000 0000';
+        swapPhones(isLTR);
+        localStorage.setItem('dallal-lang', isLTR ? 'ar' : 'en');
+    }
+
+    function swapPhones(goArabic) {
+        const main   = document.getElementById('phoneMain');
+        const second = document.getElementById('phoneSecond');
+        main.classList.add('swapping');
+        second.classList.add('swapping');
+        setTimeout(() => {
+            document.getElementById('phoneMainImg').src   = goArabic ? 'arabic_phone.png'  : 'english_phone.png';
+            document.getElementById('phoneSecondImg').src = goArabic ? 'arabic_intro.png'  : 'english_intro.png';
+            main.classList.remove('swapping');
+            second.classList.remove('swapping');
+        }, 350);
+    }
+
+    document.getElementById('phone').addEventListener('input', function(e) {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length > 4) v = v.slice(0,4) + ' ' + v.slice(4);
+        if (v.length > 9) v = v.slice(0,9) + ' ' + v.slice(9,13);
+        e.target.value = v;
+    });
+
+    window.addEventListener('DOMContentLoaded', function() {
+        if (localStorage.getItem('dallal-lang') === 'ar') {
+            document.body.setAttribute('dir', 'rtl');
+            document.documentElement.setAttribute('lang', 'ar');
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.getElementById('email').placeholder = 'بريدك@الإلكتروني.com';
+            document.getElementById('phone').placeholder = '٠٠٠٠ ٠٠٠٠';
+            document.getElementById('phoneMainImg').src   = 'arabic_phone.png';
+            document.getElementById('phoneSecondImg').src = 'arabic_intro.png';
+        }
+    });
+</script>
+</body>
+</html>
