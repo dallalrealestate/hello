@@ -6,6 +6,21 @@
     <title>Dallal - Coming Soon | دلال - قريباً</title>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* Dallal Custom Fonts */
+        @font-face {
+            font-family: 'Akzid';
+            src: url('Akzid-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Alexandria';
+            src: url('Alexandria-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
@@ -20,7 +35,7 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Akzid', 'DM Sans', sans-serif;
             background: var(--blue);
             display: flex;
             align-items: center;
@@ -29,7 +44,7 @@
             position: relative;
         }
 
-        body[dir="rtl"] { font-family: 'Tajawal', 'DM Sans', sans-serif; }
+        body[dir="rtl"] { font-family: 'Alexandria', 'Tajawal', sans-serif; }
 
         /* background circles */
         body::before {
@@ -117,13 +132,12 @@
         .phone-second.swapping { opacity: 0; transform: translateY(12px) rotate(3deg) !important; }
 
         .tagline {
-            font-size: 16px;
-            color: rgba(255,255,255,0.9); /* brighter */
+            font-size: 18px;
+            color: rgba(255,255,255,0.9);
             font-weight: 500;
             font-style: italic;
             letter-spacing: 0.8px;
-            margin-top: 10px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.45); /* adds contrast */
+            text-shadow: 0 2px 6px rgba(0,0,0,0.45);
             animation: fadeUp 0.8s ease 0.6s both;
         }
 
@@ -160,25 +174,18 @@
             animation: fadeUp 0.8s ease 0.2s both;
         }
 
-        /* logo block removed visually */
-        .form-logo {
-            display: none;
-        }
+        .form-logo { margin-bottom: 20px; }
+        .form-logo img { height: 32px; display: block; max-width: 100%; }
 
         h1 {
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Akzid', 'DM Serif Display', serif;
             font-size: 42px;
-            font-weight: 400;
+            font-weight: 500;
             color: var(--black);
             line-height: 1.05;
             margin-bottom: 10px;
-            text-align: center;
         }
-        body[dir="rtl"] h1 {
-            font-family: 'Tajawal', serif;
-            font-size: 36px;
-            text-align: center;
-        }
+        body[dir="rtl"] h1 { font-family: 'Alexandria', 'Tajawal', serif; font-size: 36px; font-weight: 500; }
 
         .subtitle {
             font-size: 14px;
@@ -186,7 +193,6 @@
             line-height: 1.7;
             margin-bottom: 28px;
             font-weight: 300;
-            text-align: center;
         }
 
         .input-group { margin-bottom: 14px; }
@@ -307,11 +313,10 @@
         .lang-ar { display: none; }
         body[dir="rtl"] .lang-en { display: none; }
         body[dir="rtl"] .lang-ar { display: block; }
-        
-        .tagline span.lang-en { display: inline; }
-        .tagline span.lang-ar { display: none; }
-        body[dir="rtl"] .tagline span.lang-en { display: none; }
-        body[dir="rtl"] .tagline span.lang-ar { display: inline; }
+        span.lang-en { display: inline; }
+        span.lang-ar { display: none; }
+        body[dir="rtl"] span.lang-en { display: none; }
+        body[dir="rtl"] span.lang-ar { display: inline; }
 
         @keyframes fadeUp {
             from { opacity:0; transform:translateY(22px); }
@@ -356,16 +361,7 @@
             .phone-main  { width: 190px; left: 0; top: 0; }
             .phone-second { width: 140px; right: 0; bottom: 0; }
 
-            .tagline {
-                 font-size: 16px;
-                color: rgba(255,255,255,0.9); /* brighter */
-                font-weight: 500;
-                font-style: italic;
-                letter-spacing: 0.8px;
-                margin-top: 10px;
-                text-shadow: 0 2px 6px rgba(0,0,0,0.45); /* adds contrast */
-                animation: fadeUp 0.8s ease 0.6s both;
-            }
+            .tagline { display: none; }
 
             /* ── WHITE FORM CARD fills rest of screen ── */
             .form-wrap {
@@ -428,13 +424,13 @@
                 <img src="english_phone.png" alt="Dallal App" id="phoneMainImg">
             </div>
             <div class="phone-second" id="phoneSecond">
-                <img src="En-white.png" alt="Dallal Intro" id="phoneSecondImg">
+                <img src="english_intro.png" alt="Dallal Intro" id="phoneSecondImg">
             </div>
         </div>
 
         <div class="tagline">
             <span class="lang-en">Peace of Mind..</span>
-            <span class="lang-ar">راحة بالك..</span>
+            <span class="lang-ar">راحة بال..</span>
         </div>
     </div>
 
@@ -447,11 +443,13 @@
         </button>
 
         <div class="right">
-            <!-- logo removed here by CSS -->
+            <div class="form-logo">
+                <img src="logo_transparent.png" alt="Dallal">
+            </div>
 
             <h1>
-                <span class="lang-en">Coming Soon.</span>
-                <span class="lang-ar">قريباً.</span>
+                <span class="lang-en">Coming Soon</span>
+                <span class="lang-ar">قريباً</span>
             </h1>
 
             <p class="subtitle">
@@ -465,7 +463,7 @@
                         <span class="lang-en">Email Address *</span>
                         <span class="lang-ar">البريد الإلكتروني *</span>
                     </label>
-                    <input type="email" id="email" placeholder="your@gmail.com" required autocomplete="email">
+                    <input type="email" id="email" placeholder="your@email.com" required autocomplete="email">
                 </div>
 
                 <div class="or-divider">
@@ -560,9 +558,11 @@
         const btn = document.querySelector('.submit-btn');
         btn.style.opacity = '0.65';
         btn.disabled = true;
+
+        // Get phone value - clean it properly
         const phoneInput = document.getElementById('phone').value.trim();
         const phoneValue = phoneInput ? document.getElementById('countryCode').value + ' ' + phoneInput : null;
-        
+
         const data = {
             email: document.getElementById('email').value,
             phone: phoneValue,
@@ -617,7 +617,7 @@
         second.classList.add('swapping');
         setTimeout(() => {
             document.getElementById('phoneMainImg').src   = goArabic ? 'arabic_phone.png'  : 'english_phone.png';
-            document.getElementById('phoneSecondImg').src = goArabic ? 'Ar-white.png'  : 'En-white.png';
+            document.getElementById('phoneSecondImg').src = goArabic ? 'arabic_intro.png'  : 'english_intro.png';
             main.classList.remove('swapping');
             second.classList.remove('swapping');
         }, 350);
@@ -638,7 +638,7 @@
             document.getElementById('email').placeholder = 'بريدك@الإلكتروني.com';
             document.getElementById('phone').placeholder = '٠٠٠٠ ٠٠٠٠';
             document.getElementById('phoneMainImg').src   = 'arabic_phone.png';
-            document.getElementById('phoneSecondImg').src = 'Ar-white.png';
+            document.getElementById('phoneSecondImg').src = 'arabic_intro.png';
         }
     });
 </script>
