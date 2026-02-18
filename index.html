@@ -560,12 +560,12 @@
         const btn = document.querySelector('.submit-btn');
         btn.style.opacity = '0.65';
         btn.disabled = true;
-
+        const phoneInput = document.getElementById('phone').value.trim();
+        const phoneValue = phoneInput ? document.getElementById('countryCode').value + ' ' + phoneInput : null;
+        
         const data = {
             email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value
-                ? document.getElementById('countryCode').value + ' ' + document.getElementById('phone').value
-                : '',
+            phone: phoneValue,
             timestamp: new Date().toISOString(),
             source: getSource(),
             userAgent: navigator.userAgent,
