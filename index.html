@@ -425,7 +425,7 @@
                 <img src="english_phone.png" alt="Dallal App" id="phoneMainImg">
             </div>
             <div class="phone-second" id="phoneSecond">
-                <img src="english_intro.png" alt="Dallal Intro" id="phoneSecondImg">
+                <img src="En_white.png" alt="Dallal Intro" id="phoneSecondImg">
             </div>
         </div>
 
@@ -618,7 +618,7 @@
         second.classList.add('swapping');
         setTimeout(() => {
             document.getElementById('phoneMainImg').src   = goArabic ? 'arabic_phone.png'  : 'english_phone.png';
-            document.getElementById('phoneSecondImg').src = goArabic ? 'arabic_intro.png'  : 'En_white.png';
+            document.getElementById('phoneSecondImg').src = goArabic ? 'Ar_white.png'  : 'En_white.png';
             main.classList.remove('swapping');
             second.classList.remove('swapping');
         }, 350);
