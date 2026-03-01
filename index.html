@@ -430,7 +430,7 @@
                 <img src="arabic_phone.png" alt="Dallal App" id="phoneMainImg">
             </div>
             <div class="phone-second" id="phoneSecond">
-                <img src="arabic_intro.png" alt="Dallal Intro" id="phoneSecondImg">
+                <img src="Ar-white.png" alt="Dallal Intro" id="phoneSecondImg">
             </div>
         </div>
 
@@ -623,7 +623,7 @@
         second.classList.add('swapping');
         setTimeout(() => {
             document.getElementById('phoneMainImg').src   = goArabic ? 'arabic_phone.png'  : 'english_phone.png';
-            document.getElementById('phoneSecondImg').src = goArabic ? 'arabic_intro.png'  : 'english_intro.png';
+            document.getElementById('phoneSecondImg').src = goArabic ? 'Ar-white.png'  : 'En-white.png';
             main.classList.remove('swapping');
             second.classList.remove('swapping');
         }, 350);
@@ -644,7 +644,7 @@
             document.getElementById('email').placeholder = 'your@email.com';
             document.getElementById('phone').placeholder = '0000 0000';
             document.getElementById('phoneMainImg').src   = 'english_phone.png';
-            document.getElementById('phoneSecondImg').src = 'english_intro.png';
+            document.getElementById('phoneSecondImg').src = 'En-white.png';
         }
     });
 </script>
