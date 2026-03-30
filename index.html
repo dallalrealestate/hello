@@ -687,7 +687,6 @@ src="https://www.facebook.com/tr?id=25796298886679775&ev=PageView&noscript=1"
 </div>
 
 <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxyEmWhf_6-6DvVsoN0Y-eCX6EjYFedkaMdo-X-mK5cphHjVXn6_j2P5LIO-5AzUDPF/exec';
 
     document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -722,19 +721,9 @@ src="https://www.facebook.com/tr?id=25796298886679775&ev=PageView&noscript=1"
             language: document.body.getAttribute('dir') === 'rtl' ? 'Arabic' : 'English',
             consent: true
         };
-
-        try {
-            await fetch(SCRIPT_URL, {
-                method: 'POST', mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-            document.getElementById('waitlistForm').style.display = 'none';
-            document.getElementById('successMsg').classList.add('show');
-        } catch(err) {
-            btn.style.opacity = '1';
-            btn.disabled = false;
-        }
+       document.getElementById('waitlistForm').style.display = 'none';
+       document.getElementById('successMsg').classList.add('show');
+        
     });
 
     // Clear error state when user checks the box
@@ -799,5 +788,6 @@ src="https://www.facebook.com/tr?id=25796298886679775&ev=PageView&noscript=1"
         }
     });
 </script>
+    <script src="https://crm.dallal.com.kw/embed/form.js" data-form-id="3f0413b7-f2f8-43c8-a8c1-19304f170a75"></script>
 </body>
 </html>
